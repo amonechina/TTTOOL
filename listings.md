@@ -4,6 +4,20 @@
 
 ---
 
+## 渠道〇：skill-from-workflow（2026-10-27 新增）
+
+### Listing — skill-from-workflow
+
+- **Title**: Skill From Workflow — turn an expert's personal workflow into a team-distributable skill
+- **Price**: $15（访谈方法论含量高，对标 B 端价值；合集可并入）
+- **Tags**: knowledge-management, onboarding, teams, interviewing, skill-engineering
+- **Description**:
+  > "Only super-individuals, no team capability." This skill runs a structured 3-round interview that extracts an expert's tacit judgment — exceptions, "looks wrong" signals, refusal conditions — into decision tables, packages it as a distributable SKILL.md skill, then gates distribution with a transferability review (author-dependence phrases, missing examples, unoperationalized judgment) and a live test where someone who wasn't interviewed runs it. Ships with a bilingual (EN/中文) question bank and a working package_review.py scanner.
+- **示例输出**: README/上方实测记录——问题样例判 REVISE（7 项命中），合格样例 SHIP
+- **渠道适配**：国内走"企业经验沉淀咨询"叙事；海外走 onboarding/knowledge-management 标签
+
+---
+
 ## 渠道一：Agensi（agensi.io）— 付费市场，70% 分成
 
 **店铺策略**：3 付费 + 1 免费（skill-compat-checker 免费引流）+ 1 合集。
