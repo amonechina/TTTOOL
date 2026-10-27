@@ -1,0 +1,53 @@
+# ============================================================
+# 技能说明文件 — infra-deploy-guard
+# ============================================================
+name: infra-deploy-guard
+display_name: 生产基础设施防护卫士
+version: "1.0.0"
+category: 云基础设施 / DevOps 安全
+language: zh-CN / en
+
+# 一句话简介
+description: >-
+  为 AI 编码智能体的云基础设施变更装上"安全带"：IaC/IAM 静态
+  安全审查、强制 plan 先行、人工审批才可 apply、爆炸半径声明
+  与回滚预案，覆盖 Terraform / CloudFormation 及主流云平台。
+
+# 解决了什么问题
+problem_solved: >-
+  开发者的真实痛点："智能体能写所有好玩的应用代码，但我 2026 年
+  还在手动配 AWS。"市面工具大多是玩票性质，一旦让智能体碰真实
+  云账号，就会面临通配符权限失控、误删生产数据库、密钥泄漏进
+  代码、失败后越权"自救"等风险。本技能把"应用代码智能体"和
+  "基础设施智能体"之间的高价值空白补上，且以最小权限为铁律。
+
+# 能为用户做什么
+capabilities:
+  - 静态安全审查：iam_scan.py 自动检出 IAM 通配符 Action/Resource、
+    无条件信任的 Principal:*、0.0.0.0/0 开放管理端口(22/3389)、
+    public-read 存储桶、硬编码密钥等 6 大类风险
+  - 强制变更计划（change plan）：意图、精确命令、资源增改删清单、
+    爆炸半径、涉及的 IAM 权限、回滚步骤缺一不可，全填才能提交审批
+  - 执行前复检：apply 前立即重跑 plan，diff 与已批准计划不一致
+    即自动升级为重新审批，杜绝状态漂移事故
+  - 有状态资源（数据库/存储/队列）的 replace/destroy 强制要求
+    用户显式确认，并提供快照先行等回滚手册
+  - 智能体权限自律：apply 失败时报权限错误时不得自行申请更大
+    权限"解锁"，必须停下报告
+
+# 典型使用场景
+when_to_use:
+  - 智能体即将修改云基础设施（AWS/GCP/Azure）之前
+  - 编写或审查 IAM 策略、Terraform、CloudFormation、部署脚本时
+  - 用户问"这个变更加上去安全吗"时
+
+# 包内资源
+resources:
+  - SKILL.md                          # 技能主文件
+  - references/cloud-checklists.md    # 最小权限标准/资源风险表/回滚手册
+  - assets/change-plan.template.md    # 强制变更计划审批模板
+  - scripts/iam_scan.py               # IaC 静态风险扫描器（支持 text/json 输出）
+
+target_users:
+  - 想让智能体安全运维真实云账号的开发者与团队
+  - 需要基础设施变更留痕、可审计的工程负责人

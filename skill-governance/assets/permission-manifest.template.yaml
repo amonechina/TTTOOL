@@ -1,0 +1,45 @@
+# Permission Manifest — fill every field; delete unused sections.
+# Deny by default: anything not explicitly allowed here is forbidden.
+
+skill_name: ""            # e.g. weekly-report
+version: "0.1.0"
+owner: ""                 # who is accountable for this skill
+last_reviewed: ""         # YYYY-MM-DD
+
+scope:
+  filesystem:
+    allow_read:
+      - ""                # exact dirs or narrow globs, e.g. D:/data/**
+    allow_write:
+      - ""                # e.g. D:/reports/out/**
+    deny:
+      - "**/.git/**"
+      - "**/node_modules/**"
+  network:
+    allow:                # full URLs or host+path patterns
+      - ""
+  services:               # email, chat, cloud APIs, databases...
+    - name: ""
+      operations: []
+      allowlist: []       # e.g. specific recipient domains
+
+credentials:
+  - name: ""              # e.g. SMTP_PASSWORD
+    source: ""            # env var / secret store path — never hardcode
+    never_expose: true    # must never appear in logs or output
+
+destructive_operations:
+  - operation: ""         # e.g. delete_files_in_reports_out
+    reversible: false     # if false, approval_gates level MUST be manual
+    rollback: ""          # reference to rollback-plan.md section
+    approval_gates: ""    # auto | confirm | manual
+
+approval_gates:
+  auto: []                # reads, scratch writes
+  confirm: []             # writes in scope, internal sends
+  manual: []              # irreversible, external, production
+
+audit:
+  log_path: governance/audit.log
+  on_start_read_tail: true   # refuse to run if previous run ended unresolved
+  fallback_events_logged: true
